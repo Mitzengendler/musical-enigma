@@ -1,0 +1,2 @@
+C:\gitrepo\musical-enigma\OP_Lab4_BF\Debug\OP_Lab4_BF.exe
+C:\gitrepo\musical-enigma\OP_Lab4_BF\Debug\OP_Lab4_BF.pdb
