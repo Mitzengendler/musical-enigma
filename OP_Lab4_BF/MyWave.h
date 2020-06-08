@@ -1,13 +1,15 @@
 #pragma once
 #include <iostream>
 #include <cstdint>
+#include <vector>
+#include <fstream>
 
 using namespace std;
 
 class MyWave
 {
 public:
-    MyWave();
+    MyWave(char file[]);
     ~MyWave();
 private:
     int32_t chunkId;   // Завжди містить значення 0x52494646 (літери "RIFF")
