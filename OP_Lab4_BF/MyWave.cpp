@@ -1,18 +1,15 @@
-#include "MyWave.h"
+ï»¿#include "MyWave.h"
 
 using namespace std;
 
-MyWave::MyWave(char file[]) {
-	cout << "enter constr" << endl;
-	cout << file << endl;
-	
-	readWave(file);
-	cout << "SAAAAAAAAAAMPLE RATE: " << this->sampleRate << endl;
-	cout << "leave constr" << endl;
+MyWave::MyWave() {
+	cout << "ÐšÐ»Ð°ÑÑ ÑÐ¾Ð·Ð´Ð°Ð½!";
 }
 
 MyWave::~MyWave() {
-	
+	delete newData;
+	delete data;
+	cout << "Done";
 }
 
 void MyWave::readWave(char file[])
@@ -21,7 +18,7 @@ void MyWave::readWave(char file[])
 	errno_t err;
 	err = fopen_s(&in, file, "rb");
 	if (err) {
-		cout << "Îøèáêà îòêðûòèÿ ôàéëà: " << err;
+		cout << "Failed to open input file, error: " << err;
 		return;
 	}
 	fread(&this->chunkId, sizeof(this->chunkId), 1, in);
@@ -57,3 +54,32 @@ void MyWave::readWave(char file[])
 	}
 	fclose(in);
 }
+
+void MyWave::writeWave(char file[])
+{
+	FILE* out;
+	errno_t err;
+	err = fopen_s(&out, file, "wb");
+	if (err) {
+		cout << "Failed to write a file, error: " << err;
+		return;
+	}
+	fwrite(&this->chunkId, sizeof(this->chunkId), 1, out);
+	fwrite(&this->chunkSize, sizeof(this->chunkSize), 1, out);
+	fwrite(&this->format, sizeof(this->format), 1, out);
+	fwrite(&this->subchunk1Id, sizeof(this->subchunk1Id), 1, out);
+	fwrite(&this->subchunk1Size, sizeof(this->subchunk1Size), 1, out);
+	fwrite(&this->audioFormat, sizeof(this->audioFormat), 1, out);
+	fwrite(&this->numChannels, sizeof(this->numChannels), 1, out);
+	fwrite(&this->sampleRate, sizeof(this->sampleRate), 1, out);
+	fwrite(&this->byteRate, sizeof(this->byteRate), 1, out);
+	fwrite(&this->blockAlign, sizeof(this->blockAlign), 1, out);
+	fwrite(&this->bitsPerSample, sizeof(this->bitsPerSample), 1, out);
+	fwrite(&this->subchunk2Id, sizeof(this->subchunk2Id), 1, out);
+	fwrite(&this->subchunk2Size, sizeof(this->subchunk2Size), 1, out);
+	for (int i = 0; i < this->subchunk2Size / this->blockAlign; i++) {
+		fwrite(&this->newData[i], sizeof(this->newData[i]), 1, out);
+	}
+	fclose(out);
+}
+

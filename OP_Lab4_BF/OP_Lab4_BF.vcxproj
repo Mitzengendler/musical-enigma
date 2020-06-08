@@ -147,12 +147,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="IO.cpp" />
     <ClCompile Include="MyWave.cpp" />
     <ClCompile Include="OP_Lab4_BF.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IO.h" />
     <ClInclude Include="MyWave.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

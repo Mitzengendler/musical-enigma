@@ -9,9 +9,10 @@ using namespace std;
 class MyWave
 {
 public:
-    MyWave(char file[]);
+    MyWave();
     ~MyWave();
     void readWave(char file[]);
+    void writeWave(char file[]);
 private:
     int32_t chunkId;   // Завжди містить значення 0x52494646 (літери "RIFF")
     int32_t chunkSize; // 36 + розмір другого підрозділу в байтах
@@ -21,7 +22,7 @@ private:
 
     int32_t subchunk1Id;   // Завжди 0x666d7420 – літери "fmt "
     int32_t subchunk1Size; // Завжди 16 для аудіо PCM. Це розмір частини підрозділу, що слідує після цього числа
-    int32_t audioFormat;   // PCM = 1
+    int16_t audioFormat;   // PCM = 1
     int16_t numChannels;   // Mono = 1, Stereo = 2
     int32_t sampleRate;    // Наприклад 44100
     int32_t byteRate;      // == SampleRate * NumChannels * BitsPerSample/8
@@ -31,5 +32,8 @@ private:
     int32_t subchunk2Id;   // 0x64617461 – літери "data"
     int32_t subchunk2Size; // == NumSamples * NumChannels * BitsPerSample/8, кількість байтів аудіоданих
     int16_t* data;   // семпли
+
+    int16_t* newData;    // Обролене аудіо
+    int32_t newSize;
 };
 
