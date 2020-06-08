@@ -1,18 +1,16 @@
 #pragma once
-#include <iostream>
+
 #include <cstdint>
 #include <vector>
 #include <fstream>
+#include <iostream>
 
-using namespace std;
-
-class MyWave
-{
+class MyWave {
 public:
-    MyWave();
+    MyWave(char fileName[]);
     ~MyWave();
-    void readWave(char file[]);
-    void writeWave(char file[]);
+    void writeWav(char fileName[]);
+    void changeWave(double c);
 private:
     int32_t chunkId;   // Завжди містить значення 0x52494646 (літери "RIFF")
     int32_t chunkSize; // 36 + розмір другого підрозділу в байтах
@@ -26,14 +24,14 @@ private:
     int16_t numChannels;   // Mono = 1, Stereo = 2
     int32_t sampleRate;    // Наприклад 44100
     int32_t byteRate;      // == SampleRate * NumChannels * BitsPerSample/8
-    int32_t blockAlign;    // == NumChannels * BitsPerSample/8
+    int16_t blockAlign;    // == NumChannels * BitsPerSample/8
     int16_t bitsPerSample; // 8 bits = 8, 16 bits = 16, etc.
 
+    // "data" subchunk
     int32_t subchunk2Id;   // 0x64617461 – літери "data"
     int32_t subchunk2Size; // == NumSamples * NumChannels * BitsPerSample/8, кількість байтів аудіоданих
-    int16_t* data;   // семпли
+    int16_t* data;         // семпли
 
-    int16_t* newData;    // Обролене аудіо
+    int16_t* newData;    // Оброблене аудіо
     int32_t newSize;
 };
-

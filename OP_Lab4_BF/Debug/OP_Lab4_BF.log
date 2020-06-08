@@ -1,4 +1,8 @@
 ﻿  MyWave.cpp
+C:\gitrepo\musical-enigma\OP_Lab4_BF\MyWave.cpp(69,38): warning C4244: '=': conversion from 'double' to 'int32_t', possible loss of data
+C:\gitrepo\musical-enigma\OP_Lab4_BF\MyWave.cpp(74,12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\gitrepo\musical-enigma\OP_Lab4_BF\MyWave.cpp(78,10): warning C4244: '=': conversion from 'double' to 'int32_t', possible loss of data
+C:\gitrepo\musical-enigma\OP_Lab4_BF\MyWave.cpp(79,16): warning C4244: '=': conversion from 'double' to 'int32_t', possible loss of data
   OP_Lab4_BF.cpp
   Generating Code...
   OP_Lab4_BF.vcxproj -> C:\gitrepo\musical-enigma\OP_Lab4_BF\Debug\OP_Lab4_BF.exe
