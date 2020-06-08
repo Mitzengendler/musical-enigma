@@ -11,6 +11,7 @@ class MyWave
 public:
     MyWave(char file[]);
     ~MyWave();
+    void readWave(char file[]);
 private:
     int32_t chunkId;   // Завжди містить значення 0x52494646 (літери "RIFF")
     int32_t chunkSize; // 36 + розмір другого підрозділу в байтах

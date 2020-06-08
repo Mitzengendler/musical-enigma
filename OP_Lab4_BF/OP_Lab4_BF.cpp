@@ -7,11 +7,16 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-	cout << "Creating Wave file" << endl;
+
+	if (argc != 4) {
+		cout << "Недостаточно параметров для выполнения програмы!" << endl;
+		return 0;
+	}
+
+	cout << "Program starts" << endl;
 	cout << argv[0] << endl;
 	cout << argv[1] << endl;
 	cout << argv[2] << endl;
 	cout << argv[3] << endl;
-	cout << "Done" << endl;
 	MyWave wav(argv[1]);
 }
