@@ -11,6 +11,7 @@ public:
     ~MyWave();
     void writeWav(char fileName[]);
     void changeWave(double c);
+    void readWav(char fileName[]);
 private:
     int32_t chunkId;   // Завжди містить значення 0x52494646 (літери "RIFF")
     int32_t chunkSize; // 36 + розмір другого підрозділу в байтах
